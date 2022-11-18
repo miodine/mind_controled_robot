@@ -22,6 +22,8 @@ Stuff that I will be using:
 0. VMWare-17-Workstation Player [[DOWNLOAD HERE](https://www.vmware.com/products/workstation-player.html)]
 1. Ubuntu 20.04 Desktop [[DOWNLOAD HERE](https://releases.ubuntu.com/20.04.5/l)] [[DOWNLOAD TORRENT](https://releases.ubuntu.com/20.04/ubuntu-20.04.5-desktop-amd64.iso.torrent)]
 2. ROS Noetic [[HOW TO DOWNLOAD AND INSTALL](http://wiki.ros.org/noetic/Installation/Ubuntu)]
+3. GitHub Desktop (xD) [[GET IT HERE](wget https://github.com/shiftkey/desktop/releases/download/release-2.9.3-linux3/GitHubDesktop-linux-2.9.3-linux3.deb &&
+sudo dpkg -i GitHubDesktop-linux-2.9.3-linux3.deb)]
 
 ## Workflow Tools
 
