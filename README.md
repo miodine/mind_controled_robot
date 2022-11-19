@@ -65,6 +65,14 @@ git clone --depth 1 -b noetic https://bitbucket.org/theconstructcore/bb8.git
 
 ... control interface:
 
-'''sh
+```sh
 roslaunch bb_8_teleop keyboard_teleop.launch
-'''
+```
+
+...other stuff:
+
+```sh
+sudo apt install ros-noetic-effort-controllers
+sudo apt install ros-noetic-joint-state-controller
+
+```
