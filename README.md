@@ -1,7 +1,8 @@
 # Final Project - M2SAAS
 
-
-![logo_xd](resources/Mind_controlled_robot.png)
+<p align="center">
+  <img src="resources/Mind_controlled_robot.png" />
+</p>
 
 
 ## General information
