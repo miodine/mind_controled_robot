@@ -1,5 +1,9 @@
 # Final Project - M2SAAS
 
+
+![logo_xd](resources/Mind_controlled_robot.png)
+
+
 ## General information
 
 * Topic: *Development of control routines for BCI-based control of a mobile platform.*
