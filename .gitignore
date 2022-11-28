@@ -1,3 +1,14 @@
 
 ros_workspace/build/
 ros_workspace/devel/
+<<<<<<< HEAD
+<<<<<<< HEAD
+data_analysis/files
+.vscode
+MUSE_prepared_ds.pkl
+=======
+>>>>>>> parent of 3ee8a67 (dataset)
+=======
+data_analysis
+.vscode
+>>>>>>> parent of 8fbf5a9 (dataset_how_to)
