@@ -1,0 +1,17 @@
+<package>
+  <name>mcr_robot_controls</name>
+  <version>1.0.0</version>
+  <description>Control layer for the mcr suite.</description>
+  <maintainer email="r@r.com">miodine</maintainer>
+  <license>BSD</license>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>geometry_msgs</build_depend>
+
+  <run_depend>geometry_msgs</run_depend>
+
+  <run_depend>kobuki_safety_controller</run_depend>
+  <run_depend>yocs_velocity_smoother</run_depend>
+  <run_depend>turtlebot_bringup</run_depend>
+</package>

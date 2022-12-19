@@ -12,3 +12,4 @@ MUSE_prepared_ds.pkl
 data_analysis
 .vscode
 >>>>>>> parent of 8fbf5a9 (dataset_how_to)
+*.npy
