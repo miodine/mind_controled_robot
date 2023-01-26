@@ -36,24 +36,21 @@
                 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠈⠻⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠙⠛⠛⠛⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                 
-                ⠀⠀⠀⠀⠀
+                
 ########################################################################################################
-            ___          _                      _      _                          _     
-            | _ )_ _ __ _(_)_ _    ___ _ __ _  _| |__ _| |_ ___ _ _   _ _  ___  __| |___ 
-            | _ \ '_/ _` | | ' \  / -_) '  \ || | / _` |  _/ _ \ '_| | ' \/ _ \/ _` / -_)
-            |___/_| \__,_|_|_||_| \___|_|_|_\_,_|_\__,_|\__\___/_|   |_||_\___/\__,_\___|
+   _____ _                   __        __                _ _____                              __   
+  / ___/(_)___ _____  ____ _/ /  _____/ /___ ___________(_) __(_)__  _____   ____  ____  ____/ /__ 
+  \__ \/ / __ `/ __ \/ __ `/ /  / ___/ / __ `/ ___/ ___/ / /_/ / _ \/ ___/  / __ \/ __ \/ __  / _ \
+ ___/ / / /_/ / / / / /_/ / /  / /__/ / /_/ (__  |__  ) / __/ /  __/ /     / / / / /_/ / /_/ /  __/
+/____/_/\__, /_/ /_/\__,_/_/   \___/_/\__,_/____/____/_/_/ /_/\___/_/     /_/ /_/\____/\__,_/\___/ 
+       /____/                                                                                      
 
 ########################################################################################################
 
 Description: 
 
-The node emulates sequences of brainwaves gathered from the MUSE 2016 headset's electrodes chunked by the BCI 
-signal-handling routines.
-
-Parameters of the signal blocks:
-
-* Sampling frequency: 160 samples per second
-* Chunked signal lenght: 80/160/640 samples
-* Number of signals per block: 4
+The node is responsible for generating probabilities for desired robot move, based on the brainwaves
+registered on the MUSE 2016 headset and chunked into blocks of timeseries by the BCI signal processing
+routine.
 
 Now running...

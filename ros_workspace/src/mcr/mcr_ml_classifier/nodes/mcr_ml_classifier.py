@@ -7,20 +7,21 @@ from mcr_messages.msg import mcr_datastream, mcr_predictions
 
 # node imports
 import numpy as np
-from mcr_model import MlClassifier
+from mcr_model import MlClassifier, LOGINFO
 
 
 
 def ml_classifier_node():
     mlc = MlClassifier()
 
-    pub = rospy.Publisher("/mcr_mlclass_predictions", mcr_predictions, queue_size=10)
-    
-    sub = rospy.Subscriber("/mcr_bci_data_feed", mcr_datastream, mlc.get_signals_callback)
 
     rospy.init_node("mcr_ml_classifier", anonymous= False)
+    pub = rospy.Publisher("/mcr_mlclass_predictions", mcr_predictions, queue_size=10)
+    sub = rospy.Subscriber("/mcr_bci_data_feed", mcr_datastream, mlc.get_signals_callback)
     rate = rospy.Rate(0.5)
-    
+
+    rospy.loginfo(LOGINFO)
+
     while not rospy.is_shutdown():
         try:
             msg = mlc.classify()

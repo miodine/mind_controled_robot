@@ -28,6 +28,15 @@ MODEL_NAME = 'ffnet_in_640_cl_700'
 LOAD_PATH = str(os.path.dirname(__file__)) + '/models/'+ MODEL_NAME + '/'
 
 
+# PTF = path to file
+PTF = str(os.path.dirname(__file__))
+
+# load run info
+__log_txt_file_handle = open(PTF + "/presentation_layer/init_msg.txt","r")
+LOGINFO = __log_txt_file_handle.read()
+__log_txt_file_handle.close()
+
+
 def FourierFeaturesNet(nb_classes = 5, Chans = 4, Samples = 640, classification_layer_dim = 700):
     ff_net = tf.keras.Sequential()
     ff_net.add(Input(shape = (Chans,Samples)))
