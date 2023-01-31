@@ -11,6 +11,8 @@ add_message_files(
   FILES
     mcr_datastream.msg
     mcr_predictions.msg
+    mcr_intention.msg
+    mcr_control_monit.msg
 )
 
 

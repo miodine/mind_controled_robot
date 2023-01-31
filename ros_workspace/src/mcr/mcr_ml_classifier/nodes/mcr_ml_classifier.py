@@ -16,9 +16,9 @@ def ml_classifier_node():
 
 
     rospy.init_node("mcr_ml_classifier", anonymous= False)
-    pub = rospy.Publisher("/mcr_mlclass_predictions", mcr_predictions, queue_size=10)
+    pub = rospy.Publisher("/mcr_mlclass_predictions", mcr_predictions, queue_size=1)
     sub = rospy.Subscriber("/mcr_bci_data_feed", mcr_datastream, mlc.get_signals_callback)
-    rate = rospy.Rate(0.5)
+    rate = rospy.Rate(1)
 
     rospy.loginfo(LOGINFO)
 

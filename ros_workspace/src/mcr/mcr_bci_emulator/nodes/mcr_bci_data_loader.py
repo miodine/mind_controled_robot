@@ -26,6 +26,8 @@ class Brain:
         self.intentions = TRUE_TARGETS
         self.brainwaves_chunked = self._split_data_by_target()
         self._stream_stack = []
+        self.i_indx = 4
+        self.semantic = 'NONE'
 
     def _split_data_by_target(self):
         brainwaves_blocks = [ [] for _ in range(5) ]
@@ -39,6 +41,9 @@ class Brain:
                 print(len(brainwaves_blocks[i]))
 
         return brainwaves_blocks
+
+
+
 
     def get_brainwave_block(self, block_idx):
         # block_idx legend:
@@ -74,14 +79,18 @@ class Brain:
         if return_stream == True:
             return stream 
     
+    def get_intention_callback(self,data):
+        self.i_indx = data.intention
+        self.semantic = data.semantic
 
     def feed_data(self,**args):
-        if len(self._stream_stack) != 0:
-            return self._stream_stack.pop() 
-        
-        i_indx = 0
-        p_frac = 0.8
+        i_indx = self.i_indx
+        p_frac = 0.01*random.randint(70,99)
         s_lght = 10
+
+
+        if len(self._stream_stack) != 0:
+            return {'data': self._stream_stack.pop(), 'purity': p_frac, 'block_length': s_lght, 'intention': self.semantic}
 
         if "intention_idx" in args:
             i_indx = args["intention_idx"]
@@ -92,7 +101,7 @@ class Brain:
 
         self.get_data_to_stream(intention_idx=i_indx, purity_frac = p_frac, stream_length = s_lght)
         
-        return self._stream_stack.pop()
+        return {'data': self._stream_stack.pop(), 'purity': p_frac, 'block_length': s_lght, 'intention': self.semantic}
 
 
 

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<launch> 
+<node pkg = "mcr_bci_emulator" type = "mcr_bci_emulator.py" name = "mcr_bci_emulator" output = "screen"/>
+<node pkg = "mcr_bci_emulator" type = "mcr_bci_intention_controller.py" name = "mcr_bci_intention_controller" output = "screen"/> 
+</launch>

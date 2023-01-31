@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch> 
+        <include file="$(find bb_8_gazebo)/launch/main.launch" />
+
+        <include file="$(find mcr_bci_emulator)/launch/main.launch" />
+        <include file="$(find mcr_ml_classifier)/launch/main.launch" />
+        <include file="$(find mcr_robot_controls)/launch/main.launch" />
+        <!--include file="$(find mcr_gui)/launch/main.launch" /!-->
+
+</launch>

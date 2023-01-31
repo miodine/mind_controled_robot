@@ -2,6 +2,7 @@
 
 # ROS imports
 from geometry_msgs.msg import Twist
+from mcr_messages.msg import mcr_control_monit
 
 # module imports
 import numpy as np
@@ -19,8 +20,8 @@ __log_txt_file_handle.close()
 
 
 # Robot control constants
-MOVE_BINDINGS = {'FRONT':(-1,0),'ROT_LEFT':(0,1),'ROT_RIGHT':(0,-1),'BACK':(1,0), 'STOP': (0,0)}
-MOVE_BINDINGS_LIST = [(-1,0),(0,1),(0,-1),(1,0),(0,0)]
+MOVE_BINDINGS = {'FRONT':(-1,0),'BACK':(1,0), 'ROT_LEFT':(0,1),'ROT_RIGHT':(0,-1),'STOP': (0,0)}
+MOVE_BINDINGS_LIST = [(-1,0),(1,0),(0,1),(0,-1),(0,0)]
 BASE_SPEED_RATE = .6
 BASE_TURN_RATE = 1
 
@@ -33,6 +34,8 @@ class RobotControls:
         
         self.target_speed = 0
         self.target_turn = 0
+        self.max_probability = 0
+
 
     def control_routine(self):
         # unpack control rates - for shorter notation
@@ -42,9 +45,9 @@ class RobotControls:
         target_turn = self.target_turn
 
         if target_speed > control_speed:
-            control_speed = min( target_speed, control_speed + 0.02 )
+            control_speed = min( target_speed, control_speed + 0.5 )
         elif target_speed < control_speed:
-            control_speed = max( target_speed, control_speed - 0.02 )
+            control_speed = max( target_speed, control_speed - 0.5 )
         else:
             control_speed = target_speed
 
@@ -64,11 +67,19 @@ class RobotControls:
     def get_predictions_callback(self,data):
         self.current_predictions = list(data.predictions)
         #TEMPORARY PATCH
-        max_probability = max(self.current_predictions)
-        i = self.current_predictions.index(max_probability)
+        self.max_probability = max(self.current_predictions)
+        i = self.current_predictions.index(self.max_probability)
         self.target_speed = BASE_SPEED_RATE*MOVE_BINDINGS_LIST[i][0]
         self.target_turn = BASE_TURN_RATE*MOVE_BINDINGS_LIST[i][1]
 
+    def monit(self):
+        msg = mcr_control_monit()
+
+        i = self.current_predictions.index(self.max_probability)
+        msg.predicted_intention = list(MOVE_BINDINGS.keys())[i]
+        msg.confidence = self.max_probability
+        msg.all_predictions = self.current_predictions
+        return msg 
 
     def push_control_command(self):
         twist = Twist()

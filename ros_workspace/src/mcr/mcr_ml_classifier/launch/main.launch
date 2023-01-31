@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch> 
+<node pkg = "mcr_ml_classifier" type = "mcr_ml_classifier.py" name = "mcr_ml_classifier" output = "screen"/>
+</launch>
+
+
+
+   
