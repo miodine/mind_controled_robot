@@ -6,6 +6,6 @@
         <include file="$(find mcr_bci_emulator)/launch/main.launch" />
         <include file="$(find mcr_ml_classifier)/launch/main.launch" />
         <include file="$(find mcr_robot_controls)/launch/main.launch" />
-        <!--include file="$(find mcr_gui)/launch/main.launch" /!-->
+        <include file="$(find mcr_gui)/launch/main.launch" />
 
 </launch>

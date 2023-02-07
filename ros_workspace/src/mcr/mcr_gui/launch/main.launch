@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+
+<launch> 
+<node pkg = "mcr_gui" type = "mcr_gui.py" name = "mcr_gui" output = "screen"/>
+</launch>
