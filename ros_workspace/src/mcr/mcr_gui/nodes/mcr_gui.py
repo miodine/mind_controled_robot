@@ -142,14 +142,15 @@ class Ui_MainWindow(object):
 def callback(data,ui):
 
     # print('Data received.')
-    ui.velocity.setText('DATA GUI CHECK')
+    new_text = data.semantic
+    ui.velocity.setText(new_text)
     
 
 
 def main():
     import sys
 
-    rospy.init_node('MCR GUI', anonymous=True)
+    rospy.init_node('MCR_GUI', anonymous=True)
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
@@ -158,10 +159,11 @@ def main():
     MainWindow.show()
 
     
-    rospy.Subscriber("/mcr_bci_intention", mcr_intention, callback(ui))
+    rospy.Subscriber("/mcr_bci_intention", mcr_intention, callback, (ui))
     
-
     sys.exit(app.exec())
+
+    
 
     
 

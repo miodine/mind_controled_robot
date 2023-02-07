@@ -12,8 +12,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  qt_build
-  pyqt5-dev
+  #qt_build
+  #pyqt5-dev
 )
 
 ## System dependencies are found with CMake's conventions
@@ -108,7 +108,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES mcr_gui
-  CATKIN_DEPENDS mcr_messages roscpp rospy std_msgs qt_build pyqt5-dev
+  CATKIN_DEPENDS mcr_messages roscpp rospy std_msgs # qt_build pyqt5-dev
 #  DEPENDS system_lib
 )
 
