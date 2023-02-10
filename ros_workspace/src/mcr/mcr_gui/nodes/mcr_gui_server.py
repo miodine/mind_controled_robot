@@ -54,10 +54,17 @@ class GUIDataServer:
 
     
     def update_ui(self, event):
-        # TODO: Update of GUI's datafields.
+        # Update of GUI's datafields.
         
-        ui = self.ui        
-        ui.velocity.setText(self.intention['semantic'])
+        ui = self.ui 
+        
+        # Update       
+        ui.command.setText(self.intention['semantic']) # Intention
+        ui.prediction.setText(self.control_monit['predicted_intention']) 
+        ui.confidence.setProperty("value", int(self.control_monit['confidence'] * 100))
+        
+        # TODO accuracy and graphview
+        ui.accuracy.setText(self.)
 
     
 
