@@ -6,8 +6,18 @@
 # general 
 import sys
 
-# QT
+# QT + Matplotlib
 from PyQt5 import QtCore, QtGui, QtWidgets
+import matplotlib
+matplotlib.use('Qt5Agg')
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_qt5agg import (
+    FigureCanvas, NavigationToolbar2QT as NavigationToolbar)
+from matplotlib.figure import Figure
+
+#NP
+import numpy as np
 
 #ROS 
 import rospy
@@ -16,6 +26,11 @@ import rospy
 from mcr_gui_server import GUIDataServer
 from mcr_messages.msg import mcr_intention, mcr_datastream, mcr_predictions,  mcr_control_monit
 
+class MplCanvas(FigureCanvasQTAgg):
+    def __init__(self, parent=None, width=5, height=4, dpi=100):
+        fig = Figure(figsize=(width, height), dpi=dpi)
+        self.axes = fig.add_subplot(111)
+        super(MplCanvas, self).__init__(fig)
 
 
 class Ui_MainWindow(object):
@@ -121,12 +136,64 @@ class Ui_MainWindow(object):
         self.frame_3.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_3.setObjectName("frame_3")
-        self.graph = QtWidgets.QGraphicsView(self.frame_3)
-        self.graph.setGeometry(QtCore.QRect(160, 0, 271, 161))
-        self.graph.setStyleSheet("#graph{\n"
-                                 "    background: qlineargradient(spread:pad, x1:0.960227, y1:0.528, x2:0, y2:0.522727, stop:0 rgba(63, 73, 108, 255), stop:1 rgba(115, 127, 170, 255));\n"
-                                 "}")
-        self.graph.setObjectName("graph")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.frame_3)
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.label_3 = QtWidgets.QLabel(self.frame_3)
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        self.label_3.setFont(font)
+        self.label_3.setStyleSheet("#label_3 {\n"
+"    background: none;\n"
+"    font:  large \"Verdana\";\n"
+"    color: #dae3ff;\n"
+"}")
+        self.label_3.setObjectName("label_3")
+        self.horizontalLayout_5.addWidget(self.label_3)
+
+
+        self.dynamic_canvas = FigureCanvas(Figure(figsize=(1, 1)))
+        self.dynamic_canvas.setMinimumSize(QtCore.QSize(347,192))
+        self.horizontalLayout_5.addWidget(self.dynamic_canvas)       
+        (self._dynamic_ax_1,self._dynamic_ax_2,self._dynamic_ax_3,self._dynamic_ax_4 ) = self.dynamic_canvas.figure.subplots(4)
+        self._dynamic_ax_1.xaxis.set_visible(False)
+        self._dynamic_ax_1.yaxis.set_visible(False)
+        self._dynamic_ax_1.figure.canvas.draw()
+        self._dynamic_ax_1.figure.set_facecolor((0, 0, 1,0.01))
+        self._dynamic_ax_1.grid()
+
+        self._dynamic_ax_2.xaxis.set_visible(False)
+        self._dynamic_ax_2.yaxis.set_visible(False)
+
+        self._dynamic_ax_2.figure.canvas.draw()
+        self._dynamic_ax_2.figure.set_facecolor((0, 0, 1,0.01))
+        self._dynamic_ax_2.grid()
+
+        self._dynamic_ax_3.xaxis.set_visible(False)
+        self._dynamic_ax_3.yaxis.set_visible(False)
+        self._dynamic_ax_3.figure.canvas.draw()
+        self._dynamic_ax_3.figure.set_facecolor((0, 0, 1,0.01))
+        self._dynamic_ax_3.grid()
+
+        self._dynamic_ax_4.xaxis.set_visible(True)
+        self._dynamic_ax_4.yaxis.set_visible(False)
+        self._dynamic_ax_4.figure.canvas.draw()
+        self._dynamic_ax_4.figure.set_facecolor((0, 0, 1,0.01))
+        self._dynamic_ax_4.grid()
+
+
+
+
+
+
+
+
+
+
+
+
         self.verticalLayout.addWidget(self.frame_3)
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -136,10 +203,17 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.header.setText(_translate("MainWindow", "Mind Controlled Robot"))
-        self.prediction.setText(_translate("MainWindow", "TextLabel"))
-        self.command.setText(_translate("MainWindow", "TextLabel"))
-        self.velocity.setText(_translate("MainWindow", "TextLabel"))
+        self.label_5.setText(_translate("MainWindow", "Mind Controlled Robot"))
+        self.label_4.setText(_translate("MainWindow", "   ewelian x miodine"))
+        self.label.setText(_translate("MainWindow", "Intention:"))
+        self.command.setText(_translate("MainWindow", "None"))
+        self.label_2.setText(_translate("MainWindow", "Prediction"))
+        self.prediction.setText(_translate("MainWindow", "None"))
+        self.label_6.setText(_translate("MainWindow", "  Confidence:"))
+        self.label_7.setText(_translate("MainWindow", "Accuracy:"))
+        self.accuracy.setText(_translate("MainWindow", "None"))
+        self.label_3.setText(_translate("MainWindow", "Data\nStream\nViz."))
+# import mcr_gui_rc
 
 def main():
 

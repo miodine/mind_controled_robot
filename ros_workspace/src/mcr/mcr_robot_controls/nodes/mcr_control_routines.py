@@ -20,8 +20,8 @@ __log_txt_file_handle.close()
 
 
 # Robot control constants
-MOVE_BINDINGS = {'FRONT':(-1,0),'BACK':(1,0), 'ROT_LEFT':(0,1),'ROT_RIGHT':(0,-1),'STOP': (0,0)}
-MOVE_BINDINGS_LIST = [(-1,0),(1,0),(0,1),(0,-1),(0,0)]
+MOVE_BINDINGS = {'FORWARD':(-1,0),'BACKWARD':(1,0), 'ROT_LEFT':(0,-1),'ROT_RIGHT':(0,1),'STOP': (0,0)}
+MOVE_BINDINGS_LIST = [(-1,0),(1,0),(0,-1),(0,1),(0,0)]
 BASE_SPEED_RATE = .6
 BASE_TURN_RATE = 1
 
