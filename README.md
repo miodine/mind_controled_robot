@@ -32,17 +32,7 @@ wget https://github.com/shiftkey/desktop/releases/download/release-2.9.3-linux3/
 sudo dpkg -i GitHubDesktop-linux-2.9.3-linux3.deb)
 ```
 
-4. That stupid robot [[GRAB IT HERE](https://get-help.robotigniteacademy.com/t/is-there-any-way-that-i-can-run-everything-in-my-local-machine/4028/3)]
-
-
-## Workflow Tools
-
-Same as always:
-
-1. ClickUp for organisation of tasks at hand
-2. Overleaf for producing the thesis-like paper for the supervisor 
-3. Collab for optional data analysis -- NOT RECOMMENDED because we will 
-be handling large files.
+4. That bb8 robot [[GRAB IT HERE](https://get-help.robotigniteacademy.com/t/is-there-any-way-that-i-can-run-everything-in-my-local-machine/4028/3)]
 
 
 ## Notes on development
@@ -53,7 +43,7 @@ be handling large files.
 
 ## Dependency list:
 
-In case you missed something, to run that stupid fucking robot you have to install ```robot_controllers``` package.
+In case you missed something, to run that robot you have to install ```robot_controllers``` package.
 
 ```sh
 cd ~/ros_workspace/src
