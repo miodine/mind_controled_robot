@@ -41,7 +41,7 @@ def bci_intention_controller_node():
     pub = rospy.Publisher("/mcr_bci_intention", mcr_intention, queue_size=1)
     rospy.init_node("mcr_bci_intention_controller", anonymous= False)
     rospy.loginfo("Intention controller running. Press 'i' key to exit. ")
- 
+    rate = rospy.Rate(0.5)
 
     # Routine init
     msg = mcr_intention()
@@ -66,7 +66,6 @@ def bci_intention_controller_node():
                 msg.semantic = SEMANTICS[INTENTIONS[key]]
                 msg.intention = INTENTIONS[key]
                 rospy.loginfo("Intention for {} motion. ({})".format(msg.semantic, key))
-                
                 pub.publish(msg)
 
             if key == 'i':

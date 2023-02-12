@@ -13,10 +13,11 @@ def robot_controls_node():
     robot_controls = RobotControls()
 
     rospy.init_node("mcr_robot_controls", anonymous= False)
-    pub_ctl = rospy.Publisher('/cmd_vel', Twist, queue_size=5) 
+    pub_ctl = rospy.Publisher('/cmd_vel', Twist, queue_size=1) 
     pub_ctl_monit = rospy.Publisher('/mcr_control_monit', mcr_control_monit, queue_size=1)
+
     sub = rospy.Subscriber("/mcr_mlclass_predictions", mcr_predictions, robot_controls.get_predictions_callback)    
-    rate = rospy.Rate(2)
+    rate = rospy.Rate(1)
     rospy.loginfo(LOGINFO)
 
     while not rospy.is_shutdown():
