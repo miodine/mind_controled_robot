@@ -26,12 +26,6 @@ import rospy
 from mcr_gui_server import GUIDataServer
 from mcr_messages.msg import mcr_intention, mcr_datastream, mcr_predictions,  mcr_control_monit
 
-class MplCanvas(FigureCanvasQTAgg):
-    def __init__(self, parent=None, width=5, height=4, dpi=100):
-        fig = Figure(figsize=(width, height), dpi=dpi)
-        self.axes = fig.add_subplot(111)
-        super(MplCanvas, self).__init__(fig)
-
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -42,8 +36,6 @@ class Ui_MainWindow(object):
 "    background: rgba(63,73,108,1);\n"
 "    font-family: \'Poppins\', sans-serif;\n"
 "    border-radius: 10px;\n"
-"    overflow: hidden;\n"
-"    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);\n"
 "\n"
 "\n"
 "}")
@@ -373,10 +365,12 @@ class Ui_MainWindow(object):
         self.label_11.setText(_translate("MainWindow", "TP8"))
 # import mcr_gui_rc
 
+   
+
 def main():
 
     # initialize node 
-    rospy.init_node('mcr_gui', anonymous=True)
+    rospy.init_node('mcr_gui', anonymous=False)
 
     # initialize UI
     app = QtWidgets.QApplication(sys.argv)
@@ -388,18 +382,12 @@ def main():
     data_handle = GUIDataServer(ui)
 
     # schedule periodic ui update
-    rospy.Timer(rospy.Duration(0.5), data_handle.update_ui)
-
+    rospy.Timer(rospy.Duration(1), data_handle.update_ui)
 
     # run the UI
     MainWindow.show()
-    sys.exit(app.exec())
-
-    
-
-    
-
-
+    app.exec()
+    app.closingDown()
 
 
 if __name__ == "__main__":
