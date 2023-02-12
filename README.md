@@ -20,9 +20,7 @@ This is the master repository for all the project work that we will be doing. I'
 3. [data_analysis](data_analysis) for the work output of data analysis of the dataset
 4. [other](other) for all the other things.
 
-## Our technological stack
-
-Stuff that I will be using:
+## Our technology stack
 
 0. VMWare-17-Workstation Player [[DOWNLOAD HERE](https://www.vmware.com/products/workstation-player.html)]
 1. Ubuntu 20.04 Desktop [[DOWNLOAD HERE](https://releases.ubuntu.com/20.04.5/l)] [[DOWNLOAD TORRENT](https://releases.ubuntu.com/20.04/ubuntu-20.04.5-desktop-amd64.iso.torrent)]
@@ -81,3 +79,16 @@ sudo apt install ros-noetic-effort-controllers
 sudo apt install ros-noetic-joint-state-controller
 
 ```
+
+## Running the system
+Navigate into the ```ros_workspace``` folder. Then type the following commands:
+
+```sh 
+catkin_make
+source devel/setup.bash
+roslaunch mcr_main mcr_main.launch
+```
+
+Which will start everything.
+
+
